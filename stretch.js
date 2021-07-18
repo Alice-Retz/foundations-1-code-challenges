@@ -50,7 +50,13 @@ Output:
 */
 
 export function organizePricesByKey(arr) {
-    return {};
+    return arr.reduce((accumulate, currentValue) => {
+        console.log(accumulate, currentValue);
+        return {
+            ...accumulate,
+            [currentValue.id]: currentValue.price
+        }
+    }, {})
 }
 
 /*
@@ -90,7 +96,11 @@ Output:
 */
 
 export function makeAHashMap(arr) {
-    return {};
+    return arr.reduce((accumulate, currentValue) => {
+        // object[property_name]
+        accumulate[currentValue.id] = currentValue;
+        return accumulate;
+    }, {})
 }
 
 
@@ -104,5 +114,8 @@ Output:
 */
 
 export function countByCategory(arr) {
-    return {};
+    return arr.reduce((accumulate, currentValue) => {
+        accumulate[currentValue.category] = (accumulate[currentValue.category] || 0) + 1;
+        return accumulate;
+    }, {})
 }
